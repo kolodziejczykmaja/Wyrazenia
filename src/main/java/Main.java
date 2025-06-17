@@ -24,3 +24,4 @@ public class Main {
         System.out.println("" + zero.pomnóż(jeden));
     }
 }
+// Test publicznego repo
