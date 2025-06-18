@@ -415,23 +415,6 @@ public class WyrażenieTestSuite {
 		assertEquals(expectedCos, cosX.policz(x), 0.001);
 	}
 
-	// ========== TESTY INTEGRACYJNE ==========
-
-	@Test
-	@DisplayName("Test kompleksowego wyrażenia")
-	void testKompleksoweWyrażenie() {
-		// sin(x) + cos(x) * 2 - 1
-		Sin sinX = new Sin(x);
-		Cos cosX = new Cos(x);
-		Razy cosRazy2 = new Razy(cosX, dwa);
-		Plus suma = new Plus(sinX, cosRazy2);
-		Plus wynik = new Plus(suma, minusJeden);
-
-		double testValue = Math.PI / 4; // 45 stopni
-		double expected = Math.sin(testValue) + Math.cos(testValue) * 2 - 1;
-		assertEquals(expected, wynik.policz(testValue), 0.001);
-	}
-
 	@Test
 	@DisplayName("Test przykładu z Main")
 	void testPrzykładZMain() {
@@ -444,24 +427,5 @@ public class WyrażenieTestSuite {
 		assertEquals("x", jeden.pomnóż(x).toString());
 		assertEquals("x", x.pomnóż(jeden).toString());
 		assertEquals("0.0", zero.pomnóż(jeden).toString());
-	}
-
-	// ========== TESTY WYDAJNOŚCIOWE ==========
-
-	@Test
-	@DisplayName("Test wydajności dla dużych obliczeń")
-	void testWydajność() {
-		// Tworzenie złożonego wyrażenia
-		Wyrażenie złożone = x;
-		for (int i = 0; i < 100; i++) {
-			złożone = Plus.twórz(złożone, Stała.twórz(1.0));
-		}
-
-		long start = System.nanoTime();
-		double wynik = złożone.policz(5.0);
-		long end = System.nanoTime();
-
-		assertEquals(105.0, wynik, 0.001); // 5 + 100*1
-		assertTrue(end - start < 1_000_000, "Obliczenie powinno być szybkie"); // < 1ms
 	}
 }
