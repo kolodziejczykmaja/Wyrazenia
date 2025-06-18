@@ -5,7 +5,7 @@ public abstract class Wyrażenie {
 	public double całka(double a, double b, int n) {
         // Liczy całkę oznaczoną z wyrażenia this od a do b.
         // Całka jest liczona metodą trapezów.
-        // Zakładam, że n > 0 oraz a>=b.
+        // Zakładam, że n > 0 oraz a<=b.
 
         assert n>0;
         assert a<=b;

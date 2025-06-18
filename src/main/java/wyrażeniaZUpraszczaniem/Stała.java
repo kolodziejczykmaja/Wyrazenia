@@ -6,7 +6,7 @@ public class Stała extends Wyrażenie {
 
     @Override
     public Wyrażenie pochodna() {
-        return Stała.twórz(0);
+        return Stała.twórz(1);
     }
 
     @Override
